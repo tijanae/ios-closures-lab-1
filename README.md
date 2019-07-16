@@ -127,6 +127,10 @@ a. Use `sortedBy` to sort `citiesWithPopulation` in ascending order of populatio
 b. Use `sortedBy` to sort `citiesWithPopulation` in reverse alphabetical order of the last character in the city name.
 
 ```
+//A.
+let ascendedPop = citiesWithPopulation.sorted {$0.1 < $1.1}
+
+
 // B.
 let sortedCities2 = citiesWithPopulation.sorted(by: {(a: String, b: String) -> Bool in
 return a.reversed() > b.reversed()
