@@ -24,6 +24,15 @@ Hello Closures!
 Hello Closures!
 Hello Closures!
 ```
+```
+func applyKTimes(_ k: Int, _ clo: () -> ()) {
+for _ in 0..<k {
+clo ()
+}
+}
+
+applyKTimes(3, {print("Hello Closures!")})
+```
 
 
 ## Question 2
@@ -37,6 +46,14 @@ Input: `let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]`
 
 Expected values: `multiples = [3, 6, 9, 3, 12]`
 
+```
+let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]
+
+let multiples = numbers.filter({a -> Bool in
+return a % 3 == 0
+})
+```
+
 
 ## Question 3
 
@@ -47,6 +64,14 @@ Input: `let numbers = [4, 7, 1, 9, 6, 5, 6, 9]`
 
 Output: `9`
 
+```
+let numbers = [4, 7, 1, 9, 6, 5, 6, 9]
+
+let reduceToFindLargestElement = numbers.reduce(0, {x, y in
+return x > y ? x : y
+})
+```
+
 
 ## Question 4
 
@@ -56,6 +81,13 @@ Example:
 Input: `let strings = ["We", "Heart", "Swift"]`
 
 Output: `"We Heart Swift"`
+```
+var newString2 = strings.reduce("", {a, b in
+a + b + " "
+//a is newString in your looping solution above
+//b is i in your looping solution above
+})
+```
 
 
 ## Question 5
@@ -68,6 +100,23 @@ b. Use `sortedBy` to sort `cities` alphabetical order of the second character of
 
 c. Use `sortedBy` to sort `cities` in order of the length of the city name.
 
+```
+// A.
+let cities = ["Shanghai", "Beijing", "Delhi", "Lagos", "Tianjin", "Karachi", "Karachi", "Tokyo", "Guangzhou", "Mumbai", "Moscow", "São Paulo"]
+
+let sortedCities = cities.sorted(by: {(a: String, b: String) -> Bool in
+return a < b
+})
+
+// B.
+let sortedCities2 = cities.sorted {$0.dropFirst() > $1.dropFirst()}
+
+//C.
+let sortedCities2 = cities.map {$0.count}
+
+
+print(sortedCities2)
+```
 
 ## Question 6
 
@@ -77,6 +126,12 @@ a. Use `sortedBy` to sort `citiesWithPopulation` in ascending order of populatio
 
 b. Use `sortedBy` to sort `citiesWithPopulation` in reverse alphabetical order of the last character in the city name.
 
+```
+// B.
+let sortedCities2 = citiesWithPopulation.sorted(by: {(a: String, b: String) -> Bool in
+return a.reversed() > b.reversed()
+})
+```
 
 ## Question 7
 
